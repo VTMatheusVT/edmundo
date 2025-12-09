@@ -36,7 +36,6 @@ void Insere_reserva(LISTA_RESERVA *l, RESERVA x) {
     p->elem = x;
     p->prox = NULL;
     
-    // Inserção simples no final (poderia ser ordenada por data ou ID)
     l->ult->prox = p;
     l->ult = p;
     l->qtd++;
@@ -57,7 +56,7 @@ void Exibe_Todas_Reservas(LISTA_RESERVA l) {
         printf("\n**** SEM RESERVAS ATIVAS ****\n");
     } else {
         p = l.prim->prox;
-        printf("\n**** RELACAO DE TODAS AS RESERVAS ATIVAS: ****\n");
+        printf("\n**** RELACAO DE TODAS AS RESERVAS ATIVAS (RF04): ****\n");
         while (p != NULL) {
             exibe_reserva(p->elem);
             p = p->prox;
