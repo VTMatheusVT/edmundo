@@ -27,12 +27,13 @@ void Enfileira(FILA_ESPERA *f, HOSPEDE x) {
     }
     f->fim = novo;
     f->tamanho++;
-    printf("Hospede %s enfileirado na Lista de Espera.\n", x.nome);
+    // CORREÇÃO APLICADA AQUI
+    printf("Hospede %s enfileirado na Lista de Espera. \n", x.nome);
 }
 
 HOSPEDE Desenfileira(FILA_ESPERA *f) {
     NO_FILA *aux;
-    HOSPEDE retorno = {0}; // Inicializa com ID 0
+    HOSPEDE retorno = {0};
     if (fila_vazia(*f)) {
         printf("A Fila de Espera esta vazia.\n");
         return retorno;
@@ -41,13 +42,14 @@ HOSPEDE Desenfileira(FILA_ESPERA *f) {
     retorno = aux->elem;
     f->inicio = aux->prox;
 
-    if (f->inicio == NULL) { // Se a fila ficou vazia
+    if (f->inicio == NULL) {
         f->fim = NULL;
     }
 
     free(aux);
-    f->tamanho--;
-    printf("Hospede (ID %d) desenfileirado para Check-in.\n", retorno.id);
+    p->tamanho--;
+    // CORREÇÃO APLICADA AQUI
+    printf("Hospede (ID %d) desenfileirado para Check-in. \n", retorno.id);
     return retorno;
 }
 
@@ -57,7 +59,7 @@ void exibe_fila(FILA_ESPERA f) {
         printf("\n**** FILA DE ESPERA VAZIA ****\n");
         return;
     }
-    printf("\n**** LISTA DE ESPERA (PRIMEIRO A ENTRAR, PRIMEIRO A SAIR) ****\n");
+    printf("\n**** LISTA DE ESPERA (PRIMEIRO A ENTRAR, PRIMEIRO A SAIR - FIFO) ****\n");
     while (aux != NULL) {
         printf("ID: %d | Nome: %s", aux->elem.id, aux->elem.nome);
         aux = aux->prox;
