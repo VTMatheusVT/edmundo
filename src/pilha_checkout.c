@@ -20,12 +20,13 @@ void Empilha(PILHA_CHECKOUT *p, HOSPEDE x) {
     novo->prox = p->topo;
     p->topo = novo;
     p->tamanho++;
-    printf("Check-out de %s registrado no Historico (Pilha).\n", x.nome);
+    // CORREÇÃO APLICADA AQUI
+    printf("Check-out de %s registrado no Historico (Pilha). \n", x.nome);
 }
 
 HOSPEDE Desempilha(PILHA_CHECKOUT *p) {
     NO_PILHA *aux;
-    HOSPEDE retorno = {0}; // Inicializa com ID 0
+    HOSPEDE retorno = {0};
     if (pilha_vazia(*p)) {
         printf("A Pilha de Check-outs esta vazia.\n");
         return retorno;
@@ -35,7 +36,10 @@ HOSPEDE Desempilha(PILHA_CHECKOUT *p) {
     p->topo = aux->prox;
     free(aux);
     p->tamanho--;
-    printf("Ultimo Check-out (ID %d) removido do Historico.\n", retorno.id);
+    // CORREÇÃO APLICADA AQUI
+    printf("Ultimo Check-out (ID %d) removido do Historico. 
+[Image of a Stack showing Pop operation]
+\n", retorno.id);
     return retorno;
 }
 
@@ -45,7 +49,7 @@ void exibe_pilha(PILHA_CHECKOUT p) {
         printf("\n**** PILHA DE CHECK-OUTS VAZIA ****\n");
         return;
     }
-    printf("\n**** HISTORICO DE CHECK-OUTS (MAIS RECENTE NO TOPO) ****\n");
+    printf("\n**** HISTORICO DE CHECK-OUTS (MAIS RECENTE NO TOPO - LIFO) ****\n");
     while (aux != NULL) {
         printf("ID: %d | Nome: %s", aux->elem.id, aux->elem.nome);
         aux = aux->prox;
