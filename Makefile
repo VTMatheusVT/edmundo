@@ -12,7 +12,7 @@ CFLAGS = -I include -Wall
 # Define os arquivos objeto (.o)
 OBJS = src/main.o src/hospede_lista.o src/pilha_checkout.o src/fila_espera.o src/reserva_lista.o
 
-# Regra principal para criar o executável
+# Regra principal para criar o executável: Linka todos os arquivos objeto
 $(TARGET): $(OBJS)
 	$(CC) $(OBJS) -o $(TARGET)
 
