@@ -16,14 +16,13 @@ int hotel_vazio(HOTEL h) {
 void ler_hospede(HOSPEDE *x) {
     printf("Entre com o ID do hospede (inteiro)\n");
     scanf("%d", &x->id);
-    getchar(); // Consome o \n deixado pelo scanf
+    getchar();
     printf("Entre com o nome do hospede\n");
     fgets(x->nome, 40, stdin);
     printf("Entre com o CPF do hospede\n");
     fgets(x->cpf, 15, stdin);
     printf("Entre com o telefone do hopsede\n");
     fgets(x->telefone, 15, stdin);
-    // Campos adicionais removidos para simplificar, mas podem ser reintroduzidos se necessário.
 }
 
 void Insere_hospede(HOTEL *h, HOSPEDE x) {
@@ -37,14 +36,12 @@ void Insere_hospede(HOTEL *h, HOSPEDE x) {
     p->elem = x;
     busca = h->prim;
 
-    // Busca o ponto de inserção ordenada por ID
     while ((busca->prox != NULL) && (x.id > busca->prox->elem.id))
         busca = busca->prox;
 
     p->prox = busca->prox;
     busca->prox = p;
 
-    // Se a inserção foi no final da lista
     if (busca == h->ult)
         h->ult = p;
 
@@ -81,6 +78,8 @@ void consulta_hospede(HOTEL h, int id) {
 
 void Remover_hospede(HOTEL *h, int id, HOSPEDE *removido) {
     ponteiro p, anterior;
+    removido->id = 0; 
+    
     if (hotel_vazio(*h)) {
         printf("O hotel esta vazio - remocao falhou\n");
         return;
@@ -115,7 +114,7 @@ void Exibe_Todos_hospedes(HOTEL h) {
         printf("\n**** O HOTEL ESTA VAZIO - SEM HOSPEDES CADASTRADOS ****\n");
     } else {
         p = h.prim->prox;
-        printf("\n**** RELACAO DE TODOS OS HÓSPEDES CADASTRADOS: ****\n");
+        printf("\n**** RELACAO DE TODOS OS HÓSPEDES CADASTRADOS (RF02): ****\n");
         while (p != NULL) {
             exibe_hospede(p->elem);
             p = p->prox;
